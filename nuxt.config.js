@@ -1,3 +1,4 @@
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -15,10 +16,12 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "~/assets/scss/styles.scss"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/bootstrap.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,6 +42,21 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
   ],
+
+  // specify module rules for css and scss
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+  
+  bootstrapVue: {
+    bootstrapCSS: false, // Or `css: false`
+    bootstrapVueCSS: false // Or `bvCSS: false`
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

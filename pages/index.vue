@@ -1,5 +1,7 @@
 <template>
-  <Tutorial />
+  <div>
+    <b-button variant="primary">teste</b-button>
+  </div>
 </template>
 
 <script>
