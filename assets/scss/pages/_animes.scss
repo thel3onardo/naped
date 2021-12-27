@@ -1,0 +1,21 @@
+.anime-page__header__bg {
+    width: 100%;
+    height: 300px;
+    background-image: url('../../static/images/animes/capa-noticia.svg');
+    position: relative;
+    z-index: 1;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-image: linear-gradient(90deg, #13131F 0%, rgba(19, 19, 31, 0) 100%);
+    }
+}
+
+.anime-page__header__content {
+    position: relative;
+    z-index: 3;
+}

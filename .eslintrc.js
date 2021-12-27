@@ -15,5 +15,8 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    "eol-last": ["error", "never"],
+    "vue/multi-word-component-names": 0,
+  }
 }

@@ -1,0 +1,20 @@
+$primary: #8257E6;
+$white: #FEFBFB;
+$pale-white: #C4C4C4;
+$pale-gray: #282830;
+$dark: #13131F;
+
+$theme-colors: (
+    "pale-white": $pale-white,
+    "pale-gray": $pale-gray,
+    "dark": $dark
+) !default;
+
+$link-color: $pale-white !default;
+$link-hover-color: $white !default;
+
+$font-weight-normal: 500 !default;
+
+.rounded-full {
+    border-radius: 30px !important;
+}

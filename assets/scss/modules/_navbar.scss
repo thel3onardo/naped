@@ -1,0 +1,32 @@
+.nav-bar__my-account__font-size {
+    font-size: 0.85rem !important;
+}
+
+.nav-bar__menu {
+    list-style: none;
+    
+    li {
+        a {
+            padding: .2em 0;
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                height: 2px;
+                width: 0;
+                bottom: 0;
+                background-color: $primary;
+                transition: all .25s ease-out;
+            }
+
+            &:hover {
+                text-decoration: none;
+
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

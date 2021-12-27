@@ -9,5 +9,5 @@
 
 <script>
 export default {
-  name: 'index'
+  name: 'series'
 }
