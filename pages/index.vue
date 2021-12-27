@@ -9,5 +9,10 @@
 
 <script>
 export default {
-  name: 'index'
+  name: 'Home',
+  head () {
+    return {
+      title: 'Naped'
+    }
+  }
 }

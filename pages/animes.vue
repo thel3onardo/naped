@@ -11,6 +11,28 @@
 
 <script>
 export default {
-  name: 'Animes'
+  name: 'Animes',
+  head () {
+    return {
+      title: 'Animes - Naped'
+    }
+  },
+  // async fetch () {
+  //   const response = await this.$axios.$get('https://animechan.vercel.app/api/random')
+
+  //   console.log(response)
+  // },
+  async asyncData ({ $axios }) {
+    const response = await $axios.$get('https://animechan.vercel.app/api/random')
+
+    console.log(response)
+    return response
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+  }
 }
 </script>
