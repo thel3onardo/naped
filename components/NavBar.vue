@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 h-100 d-flex justify-content-between py-3">
+  <div class="w-100 h-100 d-flex justify-content-between py-4">
     <div class="h-100 d-flex align-items-center">
         <h4 class="text-primary m-0">Naped</h4>
     </div>
@@ -22,7 +22,7 @@
         </li>
       </ul>
       <div class="mx-4">
-        <b-button variant="outline-primary" class="text-white rounded-full font-titles nav-bar__my-account__font-size ml-3 px-4 py-1">Minha conta</b-button>
+        <b-button variant="outline-primary" class="text-white rounded-full font-titles nav-bar__my-account__font-size ml-3 px-4 py-2">Minha conta</b-button>
       </div>
     </div>
   </div>
