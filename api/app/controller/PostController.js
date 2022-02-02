@@ -26,6 +26,13 @@ class PostController {
             return res.status(200).send(`Documento ${document} deletado com sucesso!`)
         });
     }
+    async update(req, res) {
+        post.findOneAndUpdate({ _id: req.params.id }, req.body, (err, doc) => {
+            if (err) return res.status(500).json({ error: err });
+
+            return res.status(200).send(`Documento com id ${doc._id} atualizado com sucesso.`);
+        } )
+    }
 };
 
 module.exports = new PostController();
