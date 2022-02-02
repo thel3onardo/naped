@@ -4,7 +4,7 @@
       <div class="col-12 px-0">
         <NavBar />
       </div>
-      <Nuxt keep-alive :keep-alive-props="{ max: 5 }"/>
+      <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
     </div>
   </div>
 </template>
