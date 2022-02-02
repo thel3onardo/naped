@@ -11,7 +11,7 @@
 .layout-leave-active {
   transition: opacity 0.5s;
 }
-.layout-enter,
+.layout-enter-from,
 .layout-leave-active {
   opacity: 0;
 }

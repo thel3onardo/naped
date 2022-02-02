@@ -9,5 +9,9 @@
 
 <script>
 export default {
-  name: 'series'
+  name: 'series',
+  transition: {
+    name: 'page',
+    mode: 'in-out'
+  }
 }

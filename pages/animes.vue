@@ -12,6 +12,10 @@
 <script>
 export default {
   name: 'Animes',
+  transition: {
+    name: 'layout',
+    mode: 'out-in'
+  },
   head () {
     return {
       title: 'Animes - Naped'
