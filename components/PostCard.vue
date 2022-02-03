@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 h-100 post-card font-titles rounded mt-3" :style="{ 'background-image': `url('${backgroundImgUrl}')` }">
+  <div class="w-100 h-100 post-card font-titles rounded" :style="{ 'background-image': `url('${backgroundImgUrl}')` }">
     <div class="d-flex flex-column justify-content-between w-100 h-100 p-4">
       <div class="position-relative z-10">
         <b-button variant="primary py-1 px-4 fw-400" :style="{ 'font-size': `${categoryFontSize}rem` }">

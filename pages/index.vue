@@ -11,11 +11,32 @@
     </div>
     <div class="row" style="height: 350px">
       <div class="col-12 col-md-8 h-100">
-        <post-card background-img-url="https://i.imgur.com/43QmdXr.png" category="movies" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor." />
+        <skeleton-component v-if="$fetchState.pending" />
+        <post-card v-else :background-img-url="posts[0].image_url" :category="posts[0].category" :title="posts[0].title" />
       </div>
       <div class="col-12 col-md-4 d-flex flex-md-column h-100 pl-0">
-        <post-card background-img-url="https://i.imgur.com/43QmdXr.png" category="movies" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor." :title-font-size=".8" :categoryFontSize=".8"/>
-        <post-card background-img-url="https://i.imgur.com/43QmdXr.png" category="movies" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor." :title-font-size=".8" :categoryFontSize=".8"/>
+        <div class="h-50 pb-1">
+          <skeleton-component v-if="$fetchState.pending" />
+          <post-card
+            v-else
+            :background-img-url="posts[1].image_url"
+            :category="posts[1].category"
+            :title="posts[1].title"
+            :title-font-size="1"
+            :category-font-size=".8"
+          />
+        </div>
+        <div class="h-50 pt-1">
+          <skeleton-component v-if="$fetchState.pending" />
+          <post-card
+            v-else
+            :background-img-url="posts[2].image_url"
+            :category="posts[2].category"
+            :title="posts[2].title"
+            :title-font-size="1"
+            :category-font-size=".8"
+          />
+        </div>
       </div>
     </div>
   </header>
@@ -23,13 +44,36 @@
 
 <script>
 import PostCard from '../components/PostCard.vue'
+import SkeletonComponent from '../components/SkeletonComponent.vue'
 
 export default {
-  name: 'Home',
-  components: { PostCard },
+  name: 'Index',
+  components: {
+    PostCard,
+    SkeletonComponent
+  },
+  data () {
+    return {
+      posts: []
+    }
+  },
+  async fetch () {
+    try {
+      const res = await this.$axios.get('http://localhost:9000/posts')
+
+      if (res.status === 200) {
+        this.posts = res.data
+        return
+      }
+    } catch (err) {
+      return console.error(err)
+    }
+  },
+  fetchOnServer: false,
   head () {
     return {
       title: 'Naped'
     }
   }
 }
+</script>

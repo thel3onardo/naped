@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const db = require('./database/config')
 const app = express()
@@ -9,6 +10,7 @@ const port = process.env.PORT || 9000
 // these parsers should come before the app.use(require('./routes')) (!)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use(require('./routes'))
 
