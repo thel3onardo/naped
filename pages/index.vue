@@ -11,12 +11,12 @@
     </div>
     <div class="row" style="height: 350px">
       <div class="col-12 col-md-8 h-100">
-        <skeleton-component v-if="$fetchState.pending" />
+        <skeleton-component class="rounded" v-if="$fetchState.pending" />
         <post-card v-else :background-img-url="posts[0].image_url" :category="posts[0].category" :title="posts[0].title" />
       </div>
       <div class="col-12 col-md-4 d-flex flex-md-column h-100 pl-0">
         <div class="h-50 pb-1">
-          <skeleton-component v-if="$fetchState.pending" />
+          <skeleton-component class="rounded" v-if="$fetchState.pending" />
           <post-card
             v-else
             :background-img-url="posts[1].image_url"
@@ -27,7 +27,7 @@
           />
         </div>
         <div class="h-50 pt-1">
-          <skeleton-component v-if="$fetchState.pending" />
+          <skeleton-component class="rounded" v-if="$fetchState.pending" />
           <post-card
             v-else
             :background-img-url="posts[2].image_url"

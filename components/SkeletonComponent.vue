@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  name: 'SkeletonComponent'
+  name: 'SkeletonComponent',
+  inheritAttrs: true
 }
 </script>
 
@@ -12,7 +13,7 @@ export default {
 
 .skeleton {
    /* #351384 */
-   background-color: #351384;
+   background-color: #1a09428f;
    width: 100%;
    height: 100%;
    position: relative;
@@ -28,12 +29,12 @@ export default {
       transform: translateX(-100%);
       background-image: linear-gradient(
       90deg,
-      rgba(#501dc6, 0) 0,
-      rgba(#501dc6, 0.2) 20%,
-      rgba(#501dc6, 0.5) 60%,
-      rgba(#501dc6, 0)
+      rgba(#351384, 0) 0,
+      rgba(#351384, 0.2) 20%,
+      rgba(#351384, 0.5) 60%,
+      rgba(#351384, 0)
    );
-   animation: shimmer 2.5s infinite;
+   animation: shimmer 5s infinite;
   }
   @keyframes shimmer {
     100% {
