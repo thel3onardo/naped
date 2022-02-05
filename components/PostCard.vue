@@ -1,7 +1,7 @@
 <template>
-  <div class="w-100 h-100 post-card font-titles rounded" :style="{ 'background-image': `url('${backgroundImgUrl}')` }">
-    <div class="d-flex flex-column justify-content-between w-100 h-100 p-4">
-      <div class="position-relative z-10">
+  <div class="w-100 post-card font-titles" :style="{ 'background-image': `url('${backgroundImgUrl}')` }">
+    <div class="d-flex flex-column w-100 h-100 p-4" :class="justifyContentType">
+      <div v-if="categoryVisible" class="position-relative z-10">
         <b-button variant="primary py-1 px-4 fw-400" :style="{ 'font-size': `${categoryFontSize}rem` }">
           {{ category }}
         </b-button>
@@ -16,6 +16,7 @@
 <script>
 export default {
   name: 'PostCard',
+  inheritAttrs: true,
   props: {
     category: {
       type: String,
@@ -25,6 +26,11 @@ export default {
       type: Number,
       required: false,
       default: 1
+    },
+    categoryVisible: {
+      type: Boolean,
+      required: false,
+      default: true
     },
     title: {
       type: String,
@@ -38,6 +44,11 @@ export default {
     backgroundImgUrl: {
       type: String,
       required: true
+    },
+    justifyContentType: {
+      type: String,
+      required: false,
+      default: 'justify-content-between'
     }
   }
 }

@@ -1,34 +1,52 @@
 <template>
-  <div class="row w-100 my-5">
-    <header class="col-12 w-100 my-5 mx-4 p-0 rounded anime-page__header__bg">
-      <div class="h-100 d-flex flex-column justify-content-center px-5 anime-page__header__content">
-        <h1 class="text-white">
-          Animes
-        </h1>
-        <p class="text-pale-white w-50">
-          O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos relacionados.
-        </p>
-      </div>
-    </header>
+  <div class="d-flex flex-column flex-md-row py-5">
+    <div v-for="post in posts" :key="post._id" class="mx-3">
+      <post-card
+        :title="post.title"
+        :category="post.category"
+        :background-img-url="post.image_url"
+        :category-visible="false"
+        :title-font-size=".9"
+        justify-content-type="justify-content-end"
+        style="height: 250px; max-width: 338px"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import PostCard from '../components/PostCard.vue'
+
 export default {
   name: 'Animes',
+  components: {
+    PostCard
+  },
+  layout: 'category',
   transition: {
     name: 'layout',
     mode: 'out-in'
+  },
+  data () {
+    return {
+      posts: []
+    }
+  },
+  async fetch () {
+    const res = await this.$axios.get('http://localhost:9000/posts/?category=animes')
+    if (res.status === 200) {
+      this.posts = res.data
+    }
   },
   // async fetch () {
   //   const response = await this.$axios.$get('https://waifu.now.sh/sfw/waifu')
 
   //   console.log(response)
   // }
-  async asyncData ({ $axios }) {
-    const response = await $axios.$get('https://animechan.vercel.app/api/random')
-    return response
-  },
+  // async asyncData ({ $axios }) {
+  //   const response = await $axios.$get('https://animechan.vercel.app/api/random')
+  //   return response
+  // },
   head () {
     return {
       title: 'Animes - Naped'
