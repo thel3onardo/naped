@@ -12,14 +12,7 @@
           </p>
         </div>
       </header>
-      <b-form-group class="my-4 w-100">
-        <b-input-group class="my-3 px-4" style="background: #282830">
-          <b-form-input class="bg-transparent border-0 py-4 px-0" placeholder="Quer ajuda na procura? Pesquise aqui" />
-          <b-input-group-append class="d-flex align-items-center">
-            <b-icon icon="search" class="text-light" />
-          </b-input-group-append>
-        </b-input-group>
-      </b-form-group>
+      <category-search />
       <Nuxt />
     </div>
   </div>
