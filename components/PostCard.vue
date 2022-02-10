@@ -3,7 +3,7 @@
     <div class="d-flex flex-column w-100 h-100 p-4" :class="justifyContentType">
       <div v-if="categoryVisible" class="position-relative z-10">
         <b-button variant="primary py-1 px-4 fw-400" :style="{ 'font-size': `${categoryFontSize}rem` }">
-          {{ category }}
+          {{ capitalizeWord(category) }}
         </b-button>
       </div>
       <p class="text-light fw-400 z-10 position-relative m-0" :style="{ 'font-size': `${titleFontSize}rem` }">
@@ -49,6 +49,11 @@ export default {
       type: String,
       required: false,
       default: 'justify-content-between'
+    }
+  },
+  methods: {
+    capitalizeWord (word) {
+      return word[0].toUpperCase() + word.slice(1)
     }
   }
 }
