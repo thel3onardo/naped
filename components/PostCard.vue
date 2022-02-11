@@ -77,4 +77,11 @@ export default {
         height: 100%
         background-image: linear-gradient(180deg, transparent, #13131F)
         padding: 0
+        transition: background-color .25s ease
+
+    &:hover
+      cursor: pointer
+
+      &:before
+        background-color: rgba(130, 87, 230, .35)
 </style>
