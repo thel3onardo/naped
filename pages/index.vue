@@ -1,47 +1,57 @@
  /* eslint-disable */
 <template>
-  <header class="col-12 px-0 py-5">
-    <div class="row w-50 py-5 m-0">
-      <h1 class="text-white font-titles w-75 display-5">
-        Mundo nerd? Naped!
-      </h1>
-      <p class="text-pale-white w-75">
-        O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos relacionados.
-      </p>
-    </div>
-    <div class="row" style="height: 350px">
-      <div class="col-12 col-md-8 h-100">
-        <post-card v-if="!$fetchState.pending" :background-img-url="posts[0].image_url" :category="posts[0].category" :title="posts[0].title" class="h-100" />
-        <skeleton-component v-else class="rounded" />
+  <div>
+    <header class="w-100 px-0 py-5">
+      <div class="row w-50 py-5 m-0">
+        <h1 class="text-white font-titles w-75 display-5">
+          Mundo nerd? Naped!
+        </h1>
+        <p class="text-pale-white w-75">
+          O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos relacionados.
+        </p>
       </div>
-      <div class="col-12 col-md-4 d-flex flex-md-column h-100 pl-0">
-        <div class="h-50 pb-1">
-          <skeleton-component v-if="$fetchState.pending" class="rounded" />
+      <div class="row" style="height: 350px">
+        <div class="col-12 col-md-8 h-100">
           <post-card
-            v-else
+            v-if="!$fetchState.pending"
+            :background-img-url="posts[0].image_url"
+            :category="posts[0].category"
+            :title="posts[0].title"
+            :category-font-size="0.8"
             class="h-100"
-            :background-img-url="posts[1].image_url"
-            :category="posts[1].category"
-            :title="posts[1].title"
-            :title-font-size="1"
-            :category-font-size=".8"
           />
+          <skeleton-component v-else class="rounded" />
         </div>
-        <div class="h-50 pt-1">
-          <skeleton-component v-if="$fetchState.pending" class="rounded" />
-          <post-card
-            v-else
-            class="h-100"
-            :background-img-url="posts[2].image_url"
-            :category="posts[2].category"
-            :title="posts[2].title"
-            :title-font-size="1"
-            :category-font-size=".8"
-          />
+        <div class="col-12 col-md-4 d-flex flex-md-column h-100 pl-0">
+          <div class="h-50 pb-1">
+            <skeleton-component v-if="$fetchState.pending" class="rounded" />
+            <post-card
+              v-else
+              class="h-100"
+              :background-img-url="posts[1].image_url"
+              :category="posts[1].category"
+              :title="posts[1].title"
+              :title-font-size="1"
+              :category-font-size=".8"
+            />
+          </div>
+          <div class="h-50 pt-1">
+            <skeleton-component v-if="$fetchState.pending" class="rounded" />
+            <post-card
+              v-else
+              class="h-100"
+              :background-img-url="posts[2].image_url"
+              :category="posts[2].category"
+              :title="posts[2].title"
+              :title-font-size="1"
+              :category-font-size=".8"
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
+    <recent-news v-if="posts.length > 0" :posts="posts" />
+  </div>
 </template>
 
 <script>
@@ -65,7 +75,7 @@ export default {
 
       if (res.status === 200) {
         this.posts = res.data
-        return
+        return console.log(res.data)
       }
     } catch (err) {
       return new Error(err)

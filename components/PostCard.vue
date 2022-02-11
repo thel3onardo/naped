@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 post-card font-titles" :style="{ 'background-image': `url('${backgroundImgUrl}')` }">
+  <div class="w-100 post-card font-titles" :style="{ 'background-image': `url('${backgroundImgUrl}')`, height: height}">
     <div class="d-flex flex-column w-100 h-100 p-4" :class="justifyContentType">
       <div v-if="categoryVisible" class="position-relative z-10">
         <b-button variant="primary py-1 px-4 fw-400" :style="{ 'font-size': `${categoryFontSize}rem` }">
@@ -49,6 +49,11 @@ export default {
       type: String,
       required: false,
       default: 'justify-content-between'
+    },
+    height: {
+      type: String,
+      required: false,
+      default: '100%'
     }
   },
   methods: {
@@ -60,16 +65,16 @@ export default {
 </script>
 
 <style lang="sass">
-    .post-card
-        position: relative
-        background-position: center
-        background-size: cover
+.post-card
+    position: relative
+    background-position: center
+    background-size: cover
 
-        &:before
-            content: ''
-            position: absolute
-            width: 100%
-            height: 100%
-            background-image: linear-gradient(180deg, transparent, #13131F)
-            padding: 0
+    &:before
+        content: ''
+        position: absolute
+        width: 100%
+        height: 100%
+        background-image: linear-gradient(180deg, transparent, #13131F)
+        padding: 0
 </style>
