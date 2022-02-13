@@ -33,20 +33,12 @@ export default {
     }
   },
   async fetch () {
-    const res = await this.$axios.get('http://localhost:9000/posts/?category=animes')
+    const res = await this.$axios.get('http://localhost:4000/posts/?category=animes')
     if (res.status === 200) {
       this.posts = res.data
     }
   },
-  // async fetch () {
-  //   const response = await this.$axios.$get('https://waifu.now.sh/sfw/waifu')
-
-  //   console.log(response)
-  // }
-  // async asyncData ({ $axios }) {
-  //   const response = await $axios.$get('https://animechan.vercel.app/api/random')
-  //   return response
-  // },
+  fetchOnServer: false,
   head () {
     return {
       title: 'Animes - Naped'

@@ -71,8 +71,7 @@ export default {
   },
   async fetch () {
     try {
-      const res = await this.$axios.get('http://localhost:9000/posts')
-
+      const res = await this.$axios.get('http://localhost:4000/posts')
       if (res.status === 200) {
         this.posts = res.data
         return console.log(res.data)

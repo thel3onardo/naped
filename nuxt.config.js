@@ -40,7 +40,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    ['@nuxtjs/pwa', { workbox: false }]
   ],
 
   // specify module rules for css and scss
@@ -78,5 +78,13 @@ export default {
   loading: {
     color: '#8257E6',
     height: '5px'
+  },
+  layoutTransition: {
+    name: 'layout',
+    mode: ''
+  },
+  pageTransition: {
+    name: 'page',
+    mode: ''
   }
 }
