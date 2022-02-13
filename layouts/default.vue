@@ -5,6 +5,7 @@
         <NavBar />
       </div>
       <Nuxt keep-alive :keep-alive-props="{ max: 5 }" />
+      <Footer />
     </div>
   </div>
 </template>

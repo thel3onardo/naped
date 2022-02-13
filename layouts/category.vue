@@ -14,6 +14,7 @@
       </header>
       <category-search />
       <Nuxt />
+      <Footer />
     </div>
   </div>
 </template>
