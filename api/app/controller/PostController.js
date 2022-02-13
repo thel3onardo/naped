@@ -3,7 +3,8 @@ const post = require('../model/Post')
 class PostController {
   async store (req, res) {
     try {
-      const data = await post.create(req.body)
+      const creationDate = new Date()
+      const data = await post.create({ creation_date: creationDate, ...req.body })
       return res.status(201).json(data)
     } catch (err) {
       return res.status(500).json({ errors: [err.message] })
