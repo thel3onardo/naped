@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column flex-md-row py-5">
+  <div class="d-flex flex-column flex-md-row flex-wrap py-5">
     <div v-for="post in posts" :key="post._id" class="mx-3">
       <post-card
         :title="post.title"
@@ -7,8 +7,10 @@
         :background-img-url="post.image_url"
         :category-visible="false"
         :title-font-size=".9"
+        height="250px"
         justify-content-type="justify-content-end"
-        style="height: 250px; max-width: 338px"
+        style="max-width: 338px"
+        class="my-3"
       />
     </div>
   </div>
