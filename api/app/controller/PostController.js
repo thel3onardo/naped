@@ -12,6 +12,14 @@ class PostController {
   }
 
   async search (req, res) {
+    if (req.query.search) {
+      try {
+        const data = await post.find({ $text: { $search: req.query.search } })
+        return res.status(201).json(data)
+      } catch (err) {
+        return res.status(500).send(err)
+      }
+    }
     if (req.query.category) {
       try {
         const data = await post.find({category: req.query.category})

@@ -26,6 +26,7 @@ const postSchema = new mongoose.Schema({
     required: true
   }
 })
+postSchema.index({ title: 'text' })
 
 // mongoose.model creates a new collection. The first argument defines the name of this collection
 module.exports = mongoose.model('Post', postSchema)
