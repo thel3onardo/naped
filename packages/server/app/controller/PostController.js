@@ -4,8 +4,14 @@ const post = require('../model/Post')
 class PostController {
   async store (req, res) {
     try {
-      const data = await post.create(req.body)
-      return res.status(201).json(data)
+      const posts = await post.create(req.body)
+      return res.status(201).json({
+        status: 'success',
+        results: posts.length,
+        data: {
+          posts
+        }
+      })
     } catch (err) {
       return res.status(500).json({ errors: [err.message] })
     }
@@ -15,11 +21,17 @@ class PostController {
     try {
       const { search, ...queryString } = req.query;
       const databaseQuery = (search) ? { $text: { $search: search }, ...queryString } : { queryString }
-      const data = await Post.find(databaseQuery);
+      const posts = await Post.find(databaseQuery);
 
-      return res.status(200).json(data);
+      return res.status(200).json({
+        status: 'success',
+        results: posts.length,
+        data: {
+          posts
+        }
+      });
     } catch (err) {
-      return res.status(500).json(err);
+      return res.status(500).json({ errors: [err.message] });
     }
   }
 
