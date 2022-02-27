@@ -1,3 +1,4 @@
+const Post = require('../model/Post')
 const post = require('../model/Post')
 
 class PostController {
@@ -11,30 +12,14 @@ class PostController {
   }
 
   async search (req, res) {
-    if (req.query.search) {
-      try {
-        const data = await post.find({ $text: { $search: req.query.search } })
-        return res.status(201).json(data)
-      } catch (err) {
-        return res.status(500).send(err)
-      }
-    }
-
-    if (req.query.category) {
-      try {
-        const data = await post.find({category: req.query.category})
-        return res.status(200).json(data);
-      } catch (err) {
-        return res.status(500).json(err);
-      }
-    }
-
     try {
-      const data = await post.find({})
-      return res.status(200).json(data)
-    } 
-    catch (err) {
-      return res.status(500).json(err)
+      const { search, ...queryString } = req.query;
+      const databaseQuery = (search) ? { $text: { $search: search }, ...queryString } : { queryString }
+      const data = await Post.find(databaseQuery);
+
+      return res.status(200).json(data);
+    } catch (err) {
+      return res.status(500).json(err);
     }
   }
 

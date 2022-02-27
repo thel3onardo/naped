@@ -26,8 +26,8 @@ const postSchema = new mongoose.Schema({
     trim: true
   },
   createdAt: {
-    type: String,
-    default: new Date()
+    type: Date,
+    default: Date.now()
   }
 })
 postSchema.index({ title: 'text' })
