@@ -3,30 +3,34 @@ const mongoose = require('mongoose')
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: [true, 'The post must have a title.'],
+    unique: true,
+    trim: true
   },
-  sub_title: {
+  subTitle: {
     type: String,
-    required: true
+    required: [true, 'The post must have a subtitle.']
   },
-  image_url: {
+  imageUrl: {
     type: String,
-    required: true
+    required: [true, 'The url image of post must be specified.']
   },
   category: {
     type: String,
-    required: true
+    required: [true, 'The post category must be specified.'],
+    trim: true
   },
   content: {
     type: String,
-    required: true
+    required: [true, 'The post content must be specified.'],
+    trim: true
   },
-  creation_date: {
+  createdAt: {
     type: String,
-    required: true
+    default: new Date()
   }
 })
 postSchema.index({ title: 'text' })
 
 // mongoose.model creates a new collection. The first argument defines the name of this collection
-module.exports = mongoose.model('Post', postSchema)
+module.exports = mongoose.model('Post', postSchema);
