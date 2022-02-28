@@ -3,7 +3,7 @@
     <h4 class="text-primary font-titles">
       Naped
     </h4>
-    <p class="text-white text-center font-base w-50">
+    <p class="text-white text-center font-base md:w-50">
       Todas as imagens de filmes, séries e etc são marcas registradas dos seus respectivos proprietários.
     </p>
   </div>
@@ -14,3 +14,8 @@ export default {
   name: 'Footer'
 }
 </script>
+
+<style lang="sass" scoped>
+p
+  font-size: .8rem
+</style>
