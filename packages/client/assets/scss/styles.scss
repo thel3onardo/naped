@@ -3,10 +3,10 @@
 @import 'basics/transitions';
 
 @import 'modules/navbar';
+@import 'modules/section-header';
+@import 'modules/section-search';
 
 @import 'helpers/classes';
-
-@import 'pages/animes';
 
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-vue/src/index.scss';

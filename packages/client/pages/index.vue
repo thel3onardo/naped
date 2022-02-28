@@ -73,8 +73,7 @@ export default {
     try {
       const res = await this.$axios.get('http://localhost:4000/posts')
       if (res.status === 200) {
-        this.posts = res.data
-        return console.log(res.data)
+        this.posts = res.data.data.posts
       }
     } catch (err) {
       return new Error(err)

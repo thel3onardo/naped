@@ -1,8 +1,9 @@
 <template>
   <div class="w-100">
     <CategoryHeader
-      background-path="./static/images/animes/capa-noticia.svg"
+      background-path="images/animes/capa-noticia.svg"
       category="animes"
+      description="O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos relacionados."
       @changePostsList="changePosts"
     />
     <div class="row py-5">

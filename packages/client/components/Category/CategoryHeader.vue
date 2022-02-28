@@ -2,18 +2,17 @@
 <template>
   <div>
     <header
-      class="col-12 w-100 mt-5 p-0 rounded anime-page__header__bg"
+      class="col-12 w-100 mt-5 p-0 rounded category-page__header__bg"
+      :style="{ 'backgroundImage': `url('${backgroundPath}')` }"
     >
       <div
-        class="h-100 d-flex flex-column justify-content-center px-5 anime-page__header__content"
-        :style="{ 'backgroundImage': `url('${backgroundPath}')` }"
+        class="h-100 d-flex flex-column justify-content-center px-5 category-page__header__content"
       >
         <h1 class="text-white">
-          Animes
+          {{ capitalizeWord(category) }}
         </h1>
         <p class="text-pale-white w-50">
-          O Naped pode ser sua fonte de informações sobre o mundo nerd
-          e outros assuntos relacionados.
+          {{ description }}
         </p>
       </div>
     </header>
@@ -49,15 +48,16 @@ export default {
     category: {
       type: String,
       required: true
+    },
+    description: {
+      type: String,
+      required: true
     }
   },
   data () {
     return {
       inputText: null
     }
-  },
-  mounted () {
-    console.log(this.backgroundPath)
   },
   methods: {
     async makeSearch () {
@@ -75,45 +75,10 @@ export default {
       if (key.code === 'Enter') {
         return this.makeSearch()
       }
+    },
+    capitalizeWord (word) {
+      return word[0].toUpperCase() + word.slice(1)
     }
   }
 }
 </script>
-
-<style lang="sass" scoped>
-/* eslint-disable no-tabs */
-.anime-page__header__bg
-  width: 100%
-  height: 300px
-  position: relative
-  z-index: 1
-
-  &:before
-    content: ""
-    position: absolute
-    width: 100%
-    height: 100%
-    z-index: 2
-    background-image: linear-gradient(90deg, #13131f 0%, rgba(19, 19, 31, 0) 100%)
-
-.anime-page__header__content
-  position: relative
-  z-index: 3
-
-.search
-  background: #282830
-
-  input
-    color: #989898
-    &::placeholder
-      color: rgba(152, 152, 152, 0.4)
-    &:-ms-input-placeholder /* Internet Explorer 10-11 */
-      color: rgba(152, 152, 152, 0.4)
-    &::-ms-input-placeholder /* Microsoft Edge */
-      color: rgba(152, 152, 152, 0.4)
-    &:focus
-      border: none
-      box-shadow: none
-.test
-  background-image: url("../../static/images/animes/capa-noticia.svg")
-</style>
