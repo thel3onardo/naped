@@ -20,7 +20,7 @@ class PostController {
   async search (req, res) {
     try {
       const { search, ...queryString } = req.query;
-      const databaseQuery = (search) ? { $text: { $search: search }, ...queryString } : { queryString }
+      const databaseQuery = (search) ? { $text: { $search: search }, ...queryString } : queryString
       const posts = await Post.find(databaseQuery);
 
       return res.status(200).json({
