@@ -20,7 +20,7 @@
           </Nuxt-link>
         </li>
         <li class="mx-4">
-          <Nuxt-link to="/filmes" class="font-weight-normal">
+          <Nuxt-link to="/movies" class="font-weight-normal">
             Filmes
           </Nuxt-link>
         </li>

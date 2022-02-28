@@ -1,5 +1,10 @@
 <template>
-  <div class="w-100">
+  <CategoryIndex
+    background-path="images/movies/capa-noticia.png"
+    category="movies"
+    category-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil omnis ipsum facilis ad est deleniti."
+  />
+  <!-- <div class="w-100">
     <CategoryHeader
       background-path="images/filmes/capa-noticia.png"
       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil omnis ipsum facilis ad est deleniti."
@@ -21,23 +26,25 @@
         <div />
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import PostCard from '../components/PostCard.vue'
+import CategoryIndex from '../components/Category/CategoryIndex.vue'
 
 export default {
-  name: 'Filmes',
-  components: { PostCard },
+  name: 'Movies',
+  components: { CategoryIndex },
+  layout: 'category',
   data () {
     return {
       posts: []
     }
+  },
+  head () {
+    return {
+      title: 'Movies - Naped'
+    }
   }
 }
 </script>
-
-<style>
-
-</style>

@@ -14,3 +14,18 @@
 .cursor-pointer {
     cursor: pointer !important;
 }
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 2s
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
+}
+
+.post-card-enter-active, .post-card-leave-active {
+    transition: all 1s ease;
+}
+.post-card-enter, .post-card-leave-active {
+    opacity: 0;
+    transform: translateY(15px)
+}

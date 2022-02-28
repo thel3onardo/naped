@@ -86,5 +86,6 @@ export default {
   pageTransition: {
     name: 'page',
     mode: ''
-  }
+  },
+  ssr: true
 }
