@@ -1,0 +1,14 @@
+.form-control {
+	background: transparent;
+	border: 1px solid $primary;
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: $white;
+	transition: box-shadow .5s ease;
+
+	&:focus {
+		color: $white;
+		background: transparent;
+		border: 1px solid $primary;
+	}
+}
