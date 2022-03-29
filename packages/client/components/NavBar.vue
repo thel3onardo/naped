@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 d-flex align-items-center justify-content-between py-4 " style="z-index: 30">
+  <div class="w-100 d-flex align-items-center justify-content-between py-5" style="z-index: 30">
     <div class="h-100 d-flex align-items-center">
       <Nuxt-link to="/" class="text-decoration-none">
         <h4 class="text-primary m-0">

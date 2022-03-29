@@ -17,6 +17,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'eol-last': ['error', 'never'],
-    'vue/multi-word-component-names': 0
+    'vue/multi-word-component-names': 0,
+	'allowIndentationTabs': true
   }
 }
