@@ -8,6 +8,7 @@
 
 <script>
 export default {
-  name: 'Games'
+  name: 'Games',
+  layout: 'category'
 }
 </script>

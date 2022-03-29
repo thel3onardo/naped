@@ -8,6 +8,7 @@
 
 <script>
 export default {
-  name: 'Series'
+  name: 'Series',
+  layout: 'category'
 }
 </script>
