@@ -35,10 +35,12 @@
           </Nuxt-link>
         </li>
       </ul>
-      <div class="ml-5">
-        <b-button variant="outline-primary" class="text-white rounded-full font-titles nav-bar__my-account__font-size ml-3 px-4 py-2">
-          Minha conta
-        </b-button>
+      <div class="ml-5">	
+		<Nuxt-link to="/auth">
+			<b-button variant="outline-primary" class="text-white rounded-full font-titles nav-bar__my-account__font-size ml-3 px-4 py-2">
+				Minha conta
+			</b-button>
+		</Nuxt-link>
       </div>
     </div>
   </div>

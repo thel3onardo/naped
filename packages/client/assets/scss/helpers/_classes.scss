@@ -15,13 +15,6 @@
     cursor: pointer !important;
 }
 
-.fade-enter-active, .fade-leave-active {
-    transition: opacity 3s
-}
-.fade-enter, .fade-leave-active {
-    opacity: 0
-}
-
 .post-card-enter-active, .post-card-leave-active {
     transition: all 1s ease;
 }

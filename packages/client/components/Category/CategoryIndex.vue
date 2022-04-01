@@ -10,7 +10,7 @@
           <post-card
             :title="post.title"
             :category="post.category"
-            :background-img-url="post.image_url"
+            :background-img-url="post.imageUrl"
             :category-visible="false"
             :title-font-size="0.9"
             :style="{ 'transition-delay': `${index / 4}s`}"

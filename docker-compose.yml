@@ -1,0 +1,30 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - ./data:/data/db
+    ports:
+      - ${DB_PORT}:27017
+
+  naped-node:
+    container_name: naped-node
+    image: naped/node
+    restart: always
+    depends_on:
+      - mongo
+    build: ./packages/server/
+    ports:
+      - "4000:4000"
+
+  naped-nuxt:
+    container_name: naped-nuxt
+    image: naped-nuxt
+    restart: always
+    build: ./packages/client
+    ports:
+      - "3000:3000"

@@ -14,7 +14,7 @@
         <div class="col-12 col-md-8 h-100">
           <post-card
             v-if="!$fetchState.pending"
-            :background-img-url="posts[0].image_url"
+            :background-img-url="posts[0].imageUrl"
             :category="posts[0].category"
             :title="posts[0].title"
             :category-font-size="0.8"
@@ -28,7 +28,7 @@
             <post-card
               v-else
               class="h-100"
-              :background-img-url="posts[1].image_url"
+              :background-img-url="posts[1].imageUrl"
               :category="posts[1].category"
               :title="posts[1].title"
               :title-font-size="1"
@@ -40,7 +40,7 @@
             <post-card
               v-else
               class="h-100"
-              :background-img-url="posts[2].image_url"
+              :background-img-url="posts[2].imageUrl"
               :category="posts[2].category"
               :title="posts[2].title"
               :title-font-size="1"
