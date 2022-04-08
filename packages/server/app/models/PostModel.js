@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
     required: [true, 'The post content must be specified.'],
     trim: true
   },
-  createdAt: {
+  created: {
     type: Date,
     default: Date.now()
   }

@@ -15,7 +15,7 @@ app.use(cors())
 
 app.use(require('./routes'))
 console.log(process.env.DATABASE_LOCAL);
-mongoose.connect('mongodb://mongo:27017/naped', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/naped', { useNewUrlParser: true })
   .then((connection) => {
     console.log('Connected successfully to database')
   })
