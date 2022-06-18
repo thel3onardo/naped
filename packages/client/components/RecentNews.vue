@@ -12,7 +12,7 @@
         title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
         height="250px"
         :title-font-size="0.8"
-        :background-img-url="posts[0].image_url"
+        :background-img-url="posts[0].imageUrl"
         :category-font-size=".7"
       />
       <post-card
@@ -21,7 +21,7 @@
         title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
         height="250px"
         :title-font-size="0.8"
-        :background-img-url="posts[1].image_url"
+        :background-img-url="posts[0].imageUrl"
         :category-font-size=".7"
       />
       <post-card
@@ -30,7 +30,7 @@
         title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
         height="250px"
         :title-font-size="0.8"
-        :background-img-url="posts[2].image_url"
+        :background-img-url="posts[0].imageUrl"
         :category-font-size=".7"
       />
       <div class="w-100" />
@@ -40,7 +40,7 @@
         title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
         height="250px"
         :title-font-size="0.8"
-        :background-img-url="posts[3].image_url"
+        :background-img-url="posts[0].imageUrl"
         :category-font-size=".7"
       />
       <post-card
@@ -49,7 +49,7 @@
         title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
         height="250px"
         :title-font-size="0.8"
-        :background-img-url="posts[4].image_url"
+        :background-img-url="posts[0].imageUrl"
         :category-font-size=".7"
       />
       <post-card
@@ -58,7 +58,7 @@
         title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
         height="250px"
         :title-font-size="0.8"
-        :background-img-url="posts[5].image_url"
+        :background-img-url="posts[0].imageUrl"
         :category-font-size=".7"
       />
     </div>
@@ -76,8 +76,8 @@ export default {
       required: true
     }
   },
-  afterMount () {
-    return console.log(this.post)
+  mounted() {
+	  console.log(this.posts[0]);
   }
 }
 </script>

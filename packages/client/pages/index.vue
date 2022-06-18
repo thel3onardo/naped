@@ -28,9 +28,9 @@
             <post-card
               v-else
               class="h-100"
-              :background-img-url="posts[1].imageUrl"
-              :category="posts[1].category"
-              :title="posts[1].title"
+              :background-img-url="posts[0].imageUrl"
+              :category="posts[0].category"
+              :title="posts[0].title"
               :title-font-size="1"
               :category-font-size=".8"
             />
@@ -40,9 +40,9 @@
             <post-card
               v-else
               class="h-100"
-              :background-img-url="posts[2].imageUrl"
-              :category="posts[2].category"
-              :title="posts[2].title"
+              :background-img-url="posts[0].imageUrl"
+              :category="posts[0].category"
+              :title="posts[0].title"
               :title-font-size="1"
               :category-font-size=".8"
             />
@@ -74,6 +74,7 @@ export default {
       const res = await this.$axios.get('http://localhost:4000/posts')
       if (res.status === 200) {
         this.posts = res.data.data.posts
+		console.log(this.post[0])
       }
     } catch (err) {
       return new Error(err)

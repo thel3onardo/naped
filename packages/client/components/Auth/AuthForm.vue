@@ -8,8 +8,14 @@
 			</div>
 			<div class="my-3 position-relative">
 				<transition name="slideInLeft">
+					<template v-if="action === 'login'">
+						<FormInput invalidationMessage="Invalid field" placeholder="testando" inputmode="text" :validationFunction="(e) => e && e.length > 0" />
+					</template>
+					<!-- <template v-else>
+
+					</template>
 					<AuthLogin v-if="action === 'login'"/>
-					<AuthSignup v-else />
+					<AuthSignup v-else /> -->
 				</transition>
 			</div>
 			<b-button variant="primary">{{ capitalizeWord(action) }}</b-button>
@@ -24,7 +30,19 @@ export default {
 	mixins: [helpersMixin],
 	data () {
 		return {
-			action: 'login'
+			action: 'login',
+			form: {
+				email: null,
+				password: null,
+				name: null,
+			}
+		}
+	},
+	watch: {
+		action () {
+			this.form.email = null;
+			this.form.password = null;
+			this.form.name = null;
 		}
 	}
 }

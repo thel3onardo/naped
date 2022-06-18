@@ -12,3 +12,9 @@
 		border: 1px solid $primary;
 	}
 }
+
+.is-invalid {
+	.form-control {
+		border: 1px solid red;
+	}
+}
