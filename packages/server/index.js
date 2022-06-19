@@ -14,12 +14,12 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use(require('./routes'))
-console.log(process.env.DATABASE_LOCAL);
+
 mongoose.connect('mongodb://localhost:27017/naped', { useNewUrlParser: true })
   .then((connection) => {
     console.log('Connected successfully to database')
   })
-  .catch(err => console.log(`There was an error: ${err}`))
+  .catch(err => console.log(`Failed to connect with DB: ${err}`))
 
 app.listen(port, () => {
   console.log(`Listening to port: ${port}`)
