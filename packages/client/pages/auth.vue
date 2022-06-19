@@ -1,5 +1,5 @@
 <template>
-	<b-row class="min-vh-100 px-0 m-0 bg-dark">
+	<b-row class="min-vh-100 px-0 m-0 bg-dark" no-gutters>
 		<transition name="fade" appear>
 			<b-col cols="5" class="px-0 position-relative auth-bg">
 				<b-img src="images/auth/bg4.jpg" style="object-fit: cover; max-width: 100%; height: 100%"></b-img>
@@ -22,7 +22,7 @@ export default {
 @import '../assets/scss/styles.scss';
 
 .auth-bg {
-	box-shadow: 0px 0px 30px rgba($primary, .3);
+	box-shadow: 0px 0px 15px rgba($primary, .15);
 
 	&:before {
 		content: "";
