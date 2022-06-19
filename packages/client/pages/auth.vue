@@ -6,7 +6,7 @@
 			</b-col>
 		</transition>
 		<b-col cols="7" class="px-0 d-flex align-items-center justify-content-center">
-			<AuthForm />
+			<AuthForms />
 		</b-col>
 	</b-row>
 </template>

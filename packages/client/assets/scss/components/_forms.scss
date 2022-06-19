@@ -11,6 +11,9 @@
 		background: transparent;
 		border: 1px solid $primary;
 	}
+	&:disabled {
+		background-color: rgba($primary, .1);
+	}
 }
 
 .is-invalid {

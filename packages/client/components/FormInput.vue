@@ -6,7 +6,9 @@
 		<b-form-input
 			:placeholder="placeholder"
 			:inputmode="inputmode"
+			:type="type"
 			:state="showValidation ? isValid : null"
+			:disabled="disabled"
 			@blur="blurValidate"
 			v-model="inputData"
 			trim
@@ -28,6 +30,13 @@ export default {
 		},
 		inputmode: {
 			type: String
+		},
+		type: {
+			type: String,
+		},
+		disabled: {
+			type: Boolean,
+			default: false,
 		},
 		invalidationMessage: {
 			type: String
