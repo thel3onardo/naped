@@ -10,15 +10,15 @@
 				<transition-group name="slideInLeft">
 					<template v-if="action === 'login'">
 						<div :key="1">
-							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" @input="form.email.value = $event" :disabled="isLoading" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
-							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" @input="form.password.value = $event" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" @input="form.email.value = $event" :disabled="isLoading" @validValue="form.email.isValid = true" @isInvalid="form.email.isValid = false" />
+							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" @input="form.password.value = $event" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isValid = false" />
 						</div>
 					</template>
 					<template v-else>
 						<div :key="2">
-							<FormInput invalidationMessage="Please, insert a valid name." type="text" placeholder="Name" inputmode="text" :validationFunction="nameValid" @input="form.name.value = $event" :disabled="isLoading" @validValue="form.name.isValid = true" @isInvalid="form.email.isInvalid = false" />
-							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" @input="form.email.value = $event" :disabled="isLoading" :key="1" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
-							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" @input="form.password.value = $event" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid name." type="text" placeholder="Name" inputmode="text" :validationFunction="nameValid" @input="form.name.value = $event" :disabled="isLoading" @validValue="form.name.isValid = true" @isInvalid="form.email.isValid = false" />
+							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" @input="form.email.value = $event" :disabled="isLoading" :key="1" @validValue="form.email.isValid = true" @isInvalid="form.email.isValid = false" />
+							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" @input="form.password.value = $event" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isValid = false" />
 						</div>
 					</template>
 				</transition-group>
@@ -66,9 +66,9 @@ export default {
 				if (formArray.every((el) => el.isValid === true)) {
 					return this.makeRequest('signup')
 				}
-			}
-			if (this.action === 'login') {
-				if (formArray.slice(0, 1).every((el) => el.isValid === true)) {
+			} else if (this.action === 'login') {
+				console.log(formArray.slice(0, 2))
+				if (formArray.slice(0, 2).every((el) => el.isValid === true)) {
 					return this.makeRequest('login')
 				}
 			}

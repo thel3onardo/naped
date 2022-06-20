@@ -72,7 +72,7 @@ export default {
 	watch: {
 		isValid(newValue) {
 			if (newValue) this.$emit('validValue', this.inputData);
-			else this.$emit('isInvalidValue');
+			else this.$emit('isInvalid');
 		}
 	}
 }

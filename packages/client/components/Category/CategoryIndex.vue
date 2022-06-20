@@ -1,9 +1,9 @@
 <template>
   <div class="w-100">
     <transition name="fade" appear>
-      <category-header :background-path="backgroundPath" :category-description="categoryDescription" :category="category" />
+      <LazyCategoryHeader :background-path="backgroundPath" :category-description="categoryDescription" :category="category" />
     </transition>
-    <category-search :category="category" @newPostsList="newPostsList" />
+    <LazyCategorySearch :category="category" @newPostsList="newPostsList" />
     <div class="row">
       <div v-for="(post, index) in posts" :key="post._id" class="col-12 col-md-6 col-lg-4 grupos-move">
         <transition name="post-card" appear>
