@@ -76,7 +76,16 @@ export default {
 		},
 		async makeRequest(action) {
 			try {
-				const res = await this.$axios.get('https://animechan.vercel.app/api/random');
+				const headers = {
+					'Content-type': 'application/json'
+				}
+				const body = action === 'login'
+				?
+					{ email: this.form.email,
+					password: this.form.password }
+				:
+				this.form;
+				const res = await this.$axios.post(`http://localhost:4000/${action}`, body, headers);
 				console.log(res);
 			} catch (err) {
 				return console.error(err);
