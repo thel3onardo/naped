@@ -4,7 +4,8 @@ const validator = require('validator')
 const userModel = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Name must be specified.']
+        required: false,
+        validate: [(v) => v, 'Please, provide a valid name.']
     },
     email: {
         type: String,
@@ -15,7 +16,8 @@ const userModel = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please, provide a valid password.']
+        required: [true, 'Please, provide a valid password.'],
+        validate: [(v) => v, 'Please, provide a valid password.']
     }
 });
 
