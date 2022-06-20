@@ -7,7 +7,7 @@
 			:placeholder="placeholder"
 			:inputmode="inputmode"
 			:type="type"
-			:state="showValidation ? isValid : null"
+			:state="showValidation ? isValid ? null : false : null"
 			:disabled="disabled"
 			@blur="blurValidate"
 			v-model="inputData"
@@ -65,7 +65,13 @@ export default {
 	},
 	computed: {
 		isValid() {
-			return this.validationFunction(this.inputData) ? null : false;
+			return this.validationFunction(this.inputData)
+		}
+	},
+	watch: {
+		isValid(newValue) {
+			if (newValue) this.$emit('validValue', this.inputData);
+			else this.$emit('isInvalidValue');
 		}
 	}
 }

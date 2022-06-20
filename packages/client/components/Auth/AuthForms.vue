@@ -10,20 +10,20 @@
 				<transition-group name="slideInLeft">
 					<template v-if="action === 'login'">
 						<div :key="1">
-							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" v-model="form.email" :disabled="isLoading" />
-							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" v-model="form.password" :disabled="isLoading" :key="2" />
+							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" v-model="form.email.value" :disabled="isLoading" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" v-model="form.password.value" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
 						</div>
 					</template>
 					<template v-else>
 						<div :key="2">
-							<FormInput invalidationMessage="Please, insert a valid name." type="text" placeholder="Name" inputmode="text" :validationFunction="nameValid" v-model="form.name" :disabled="isLoading" />
-							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" v-model="form.email" :disabled="isLoading" :key="1" />
-							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" v-model="form.password" :disabled="isLoading" :key="2" />
+							<FormInput invalidationMessage="Please, insert a valid name." type="text" placeholder="Name" inputmode="text" :validationFunction="nameValid" v-model="form.name.value" :disabled="isLoading" @validValue="form.name.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" v-model="form.email.value" :disabled="isLoading" :key="1" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" v-model="form.password.value" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
 						</div>
 					</template>
 				</transition-group>
 			</div>
-			<b-button @click="sendData" variant="primary">
+			<b-button @click="verfifyFieldsValidation" variant="primary">
 				<template v-if="isLoading">
 					<b-spinner variant="light" small />
 				</template>
@@ -45,23 +45,42 @@ export default {
 		return {
 			action: 'login',
 			form: {
-				email: null,
-				password: null,
-				name: null,
+				email: { value: null, isValid: false },
+				password: { value: null, isValid: false },
+				name: { value: null, isValid: false },
 			},
 			isLoading: false,
 		}
 	},
 	watch: {
 		action () {
-			this.form.email = null;
-			this.form.password = null;
-			this.form.name = null;
+			this.form.email.value = null;
+			this.form.password.value = null;
+			this.form.name.value = null;
 		}
 	},
 	methods: {
-		sendData() {
-			this.isLoading = true;
+		verfifyFieldsValidation() {
+			const formArray = Object.values(this.form);
+			if (this.action === 'signup') {
+				if (formArray.every((el) => el.isValid === true)) {
+					return this.makeRequest('signup')
+				}
+			}
+			if (this.action === 'login') {
+				if (formArray.slice(0, 1).every((el) => el.isValid === true)) {
+					return this.makeRequest('login')
+				}
+			}
+			return this.showValidations = true;
+		},
+		async makeRequest(action) {
+			try {
+				const res = await this.$axios.get('https://animechan.vercel.app/api/random');
+				console.log(res);
+			} catch (err) {
+				return console.error(err);
+			}
 		}
 	}
 }
