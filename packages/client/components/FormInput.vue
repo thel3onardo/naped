@@ -1,7 +1,6 @@
 <template>
 	<b-form-group
 		:label="label"
-		@input="$emit('input', $e)"
 	>
 		<b-form-input
 			:placeholder="placeholder"
@@ -10,8 +9,10 @@
 			:state="showValidation ? isValid ? null : false : null"
 			:disabled="disabled"
 			@blur="blurValidate"
+			@input="$emit('input', inputData)"
 			v-model="inputData"
 			trim
+			v-bind="$attrs"
 		/>
 		<b-form-invalid-feedback v-text="invalidationMessage" />
 	</b-form-group>

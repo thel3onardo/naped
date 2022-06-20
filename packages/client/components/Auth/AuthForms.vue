@@ -10,15 +10,15 @@
 				<transition-group name="slideInLeft">
 					<template v-if="action === 'login'">
 						<div :key="1">
-							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" v-model="form.email.value" :disabled="isLoading" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
-							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" v-model="form.password.value" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" @input="form.email.value = $event" :disabled="isLoading" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" @input="form.password.value = $event" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
 						</div>
 					</template>
 					<template v-else>
 						<div :key="2">
-							<FormInput invalidationMessage="Please, insert a valid name." type="text" placeholder="Name" inputmode="text" :validationFunction="nameValid" v-model="form.name.value" :disabled="isLoading" @validValue="form.name.isValid = true" @isInvalid="form.email.isInvalid = false" />
-							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" v-model="form.email.value" :disabled="isLoading" :key="1" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
-							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" v-model="form.password.value" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid name." type="text" placeholder="Name" inputmode="text" :validationFunction="nameValid" @input="form.name.value = $event" :disabled="isLoading" @validValue="form.name.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid e-mail." type="email" placeholder="E-mail" inputmode="text" :validationFunction="emailValid" @input="form.email.value = $event" :disabled="isLoading" :key="1" @validValue="form.email.isValid = true" @isInvalid="form.email.isInvalid = false" />
+							<FormInput invalidationMessage="Please, insert a valid password" type="password" placeholder="Password" inputmode="text" :validationFunction="passwordValid" @input="form.password.value = $event" :disabled="isLoading" :key="2" @validValue="form.password.isValid = true" @isInvalid="form.email.isInvalid = false" />
 						</div>
 					</template>
 				</transition-group>
@@ -75,19 +75,22 @@ export default {
 			return this.showValidations = true;
 		},
 		async makeRequest(action) {
+			this.isLoading = true;
+			const headers = {
+				'Content-type': 'application/json'
+			}
+			const body = action === 'login'
+			? { email: this.form.email?.value, password: this.form.password?.value }
+			: { email: this.form.email?.value, password: this.form.password?.value, name: this.form.name?.value }
+
 			try {
-				const headers = {
-					'Content-type': 'application/json'
-				}
-				const body = action === 'login'
-				?
-					{ email: this.form.email,
-					password: this.form.password }
-				:
-				this.form;
 				const res = await this.$axios.post(`http://localhost:4000/${action}`, body, headers);
-				console.log(res);
+				if (res.status === 200) {
+					this.$router.push('/');
+					this.isLoading = true;
+				}
 			} catch (err) {
+				this.isLoading = false;
 				return console.error(err);
 			}
 		}
