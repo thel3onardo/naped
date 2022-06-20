@@ -10,6 +10,9 @@ routes.post('/posts', PostController.store)
 routes.delete('/posts/delete/:id', PostController.delete)
 routes.put('/posts/update/:id', PostController.update)
 
-routes.post('/user', UserController.store);
+// routes.post('/user', UserController.store);
+
+routes.post('/login', UserController.login)
+routes.post('/signup', UserController.signUp);
 
 module.exports = routes
