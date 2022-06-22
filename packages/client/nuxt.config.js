@@ -40,7 +40,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    ['@nuxtjs/pwa', { workbox: false }]
+    ['@nuxtjs/pwa', { workbox: false }],
+	//
+	'@nuxtjs/auth-next'
   ],
 
   // specify module rules for css and scss
