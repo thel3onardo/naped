@@ -60,6 +60,7 @@ import SkeletonComponent from '../components/SkeletonComponent.vue'
 
 export default {
   name: 'Index',
+  middleware: 'auth',
   components: {
     PostCard,
     SkeletonComponent

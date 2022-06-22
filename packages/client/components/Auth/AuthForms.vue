@@ -23,7 +23,7 @@
 					</template>
 				</transition-group>
 			</div>
-			<b-button @click="verfifyFieldsValidation" variant="primary">
+			<b-button @click="verifyFieldsValidation" variant="primary">
 				<template v-if="isLoading">
 					<b-spinner variant="light" small />
 				</template>
@@ -60,38 +60,52 @@ export default {
 		}
 	},
 	methods: {
-		verfifyFieldsValidation() {
+		verifyFieldsValidation() {
 			const formArray = Object.values(this.form);
 			if (this.action === 'signup') {
 				if (formArray.every((el) => el.isValid === true)) {
-					return this.makeRequest('signup')
+					return this.signUp();
 				}
 			} else if (this.action === 'login') {
-				console.log(formArray.slice(0, 2))
 				if (formArray.slice(0, 2).every((el) => el.isValid === true)) {
-					return this.makeRequest('login')
+					return this.login();
 				}
 			}
 			return this.showValidations = true;
 		},
-		async makeRequest(action) {
+		async signUp() {
 			this.isLoading = true;
 			const headers = {
 				'Content-type': 'application/json'
 			}
-			const body = action === 'login'
-			? { email: this.form.email?.value, password: this.form.password?.value }
-			: { email: this.form.email?.value, password: this.form.password?.value, name: this.form.name?.value }
+			const body = { email: this.form.email?.value, password: this.form.password?.value, name: this.form.name?.value };
 
 			try {
-				const res = await this.$axios.post(`http://localhost:4000/${action}`, body, headers);
-				if (res.status === 200) {
-					this.$router.push('/');
-					this.isLoading = true;
+				await this.$axios.post(`http://localhost:4000/signup`, body, headers);
+
+				const loginRes = await this.$auth.loginWith('local', { data: body });
+				if (loginRes.status === 200) {
+					this.$router.push('/')
 				}
 			} catch (err) {
 				this.isLoading = false;
 				return console.error(err);
+			}
+		},
+		async login() {
+			try {
+				const res = await this.$auth.loginWith('local', {
+					data: {
+						email: this.form.email?.value,
+						password: this.form.password?.value
+					}
+				});
+				console.log(res)
+				if (res.status === 200) {
+					this.$router.push('/')
+				}
+			} catch (err) {
+				return console.error(err)
 			}
 		}
 	}
